@@ -7,7 +7,7 @@ async function kvGet() {
     headers: { Authorization: `Bearer ${KV_TOKEN}` }
   });
   const data = await res.json();
-  return data.result;          // null or a JSON string
+  return data.result;
 }
 
 async function kvSet(value) {
@@ -18,7 +18,7 @@ async function kvSet(value) {
   });
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin',  '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -45,4 +45,4 @@ export default async function handler(req, res) {
   }
 
   return res.status(405).end();
-}
+};
